@@ -1,49 +1,70 @@
-<!DOCTYPE html>
+<h3 id="-unsupervised-learning-https-en-wikipedia-org-wiki-unsupervised_learning-"><a href="https://en.wikipedia.org/wiki/Unsupervised_learning">Unsupervised Learning</a></h3>
+<p>Unsupervised learning is a type of machine learning algorithm in which the model learns patterns in the data without being explicitly told <strong>what those patterns are</strong>. <a href="https://www.geeksforgeeks.org/supervised-unsupervised-learning/">Unlike supervised learning</a>, unsupervised learning does not have labelled examples to learn from, so the model must find patterns on its own.
+This makes unsupervised learning useful for exploring datasets and finding hidden patterns, as well as for <em>clustering</em> and <em>dimensionality reduction</em> tasks. </p>
+<h6 id="purpose-of-unsupervised-learning-in-data-science">Purpose of Unsupervised Learning in Data Science</h6>
+<p>The purpose of unsupervised learning in data science is to identify patterns and structures within datasets that are not explicitly labelled or classified. Unsupervised learning algorithms can help to identify hidden relationships, group similar data points and reduce the dimensionality of high-dimensional data.</p>
+<h6 id="types-of-unsupervised-learning-algorithms">Types of Unsupervised Learning Algorithms</h6>
+<p>There are several types of unsupervised learning algorithms that are commonly used in data science. Here are some of the most popular ones:</p>
+<ul>
+<li><strong><a href="https://en.wikipedia.org/wiki/Cluster_analysis">Clustering algorithms</a>:</strong> Clustering algorithms group similar data points together based on their features. Examples of clustering algorithms include <em>k-means clustering</em> and <em>hierarchical clustering</em>.</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Anomaly_detection">Anomaly detection algorithms</a>:</strong> Anomaly detection algorithms identify data points that are significantly different from the rest of the dataset. Examples of anomaly detection algorithms include Local Outlier Factor (LOF) and Isolation Forest.</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Dimensionality_reduction">Dimensionality reduction algorithms</a>:</strong> Dimensionality reduction algorithms reduce the number of features in a dataset while retaining the most important information. Examples of dimensionality reduction algorithms include Principal Component Analysis (PCA) and t-Distributed Stochastic Neighbour Embedding (t-SNE).</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Association_rule_learning">Association rule learning algorithms</a>:</strong> Association rule learning algorithms identify patterns of co-occurrence in a dataset. Examples of association rule learning algorithms include Apriori and Eclat. (Pattern recognition)</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Neural_network">Neural networks</a>:</strong> Neural networks can be used in an unsupervised learning mode, for example, by training auto-encoders, which aim to reconstruct the input data through a bottleneck layer with a reduced number of neurons. (Recommendation systems)*</li>
+</ul>
+<h4 id="k-means-clustering">K-Means Clustering</h4>
+<p>K-means clustering algorithm is used to group similar data points together. The algorithm works by iteratively partitioning the data into k (user-defined number of clusters) clusters.</p>
+<p>The basic idea behind k-means clustering is to minimize the <a href="https://en.wikipedia.org/wiki/Squared_Euclidean_distance">sum of squared distances</a> between data points and their assigned cluster centres. In other words, the algorithm aims to find the cluster centres that minimize the variance within each cluster.</p>
+<p>K-means clustering is mostly used for image segmentation, customer segmentation, and anomaly detection. It is a relatively simple and fast algorithm that can handle large datasets, but its performance can be sensitive to the initial placement of the cluster centres and the choice of k.</p>
+<h6 id="formula-">Formula:</h6>
+<ul>
+<li>a set of observations $$(x<em>{1}, x</em>{2}, ..., x_{n})$$</li>
+<li>each observation is a <em>d</em>-dimensional real vector</li>
+<li>k-means clustering aims to partition the <em>n</em> observations into <em>k</em> (≤ <em>n</em>) sets $$S = {S<em>{1}, S</em>{2},...,S_{k}}$$</li>
+<li>to minimize the within-cluster sum of squares (WCSS) (i.e. <a href="https://en.wikipedia.org/wiki/Variance">variance</a>)</li>
+<li>where <em><strong>μ</strong>i</em> is the mean (also called centroid) of points in $$S<em>{i} $$, i.e.
+$$ {\boldsymbol {\mu </em>{i}}}={\frac {1}{|S<em>{i}|}}\sum </em>{\mathbf {x} \in S_{i}}\mathbf {x} , $$</li>
+<li><p>the size of $$ S<em>{i} $$ is: $$|S</em>{i}|$$</p>
+<p><strong>Formally, the objective is to find:</strong>$${\underset {\mathbf {S} }{\operatorname {arg\,min} }}\sum <em>{i=1}^{k}\sum </em>{\mathbf {x} \in S<em>{i}}\left|\mathbf {x} -{\boldsymbol {\mu }}</em>{i}\right|^{2}={\underset {\mathbf {S} }{\operatorname {arg\,min} }}\sum <em>{i=1}^{k}|S</em>{i}|\operatorname {Var} S_{i} $$</p>
+</li>
+</ul>
+<p>and
+$$ |\cdot | $$
+is the usual <a href="[https://en.wikipedia.org/wiki/Norm_(mathematics">L2 norm</a> . This is equivalent to minimising the pairwise squared deviations of points in the same cluster:</p>
+<p>$$ {\underset {\mathbf {S} }{\operatorname {arg\,min} }}\sum <em>{i=1}^{k}\,{\frac {1}{|S</em>{i}|}}\,\sum <em>{\mathbf {x} ,\mathbf {y} \in S</em>{i}}\left|\mathbf {x} -\mathbf {y} \right|^{2} $$</p>
+<p>The equivalence can be deduced from identity 
+$$ |S<em>{i}|\sum </em>{\mathbf {x} \in S<em>{i}}\left|\mathbf {x} -{\boldsymbol {\mu }}</em>{i}\right|^{2}={\frac {1}{2}}\sum <em>{\mathbf {x} ,\mathbf {y} \in S</em>{i}}\left|\mathbf {x} -\mathbf {y} \right|^{2} $$</p>
+<p>Since the total variance is constant, this is equivalent to maximising the sum of squared deviations between points in <em>different</em> clusters (between-cluster sum of squares, BCSS). This deterministic relationship is also related to the <a href="https://en.wikipedia.org/wiki/Law_of_total_variance" title="Law of total variance">law of total variance</a> in probability theory.</p>
+<h6 id="purpose">Purpose</h6>
+<p>k-means clustering can be used for a variety of tasks, such as:
+<strong>Customer segmentation:</strong> identifying groups of customers who share similar purchasing behaviour or preferences.
+<strong>Image segmentation:</strong> dividing an image into regions that contain similar pixels or features.
+<strong>Anomaly detection:</strong> identifying data points that are significantly different from the rest of the dataset.
+<strong>Clustering of biological data:</strong> identifying groups of genes or proteins that have similar functions or expression patterns.
+Overall, the purpose of k-means clustering is to find patterns and structure in the data that can help to gain insights into the underlying phenomena. By grouping similar data points together, k-means clustering can help to simplify the data and make it easier to understand and analyse.</p>
+<h6 id="the-algorithm">The Algorithm</h6>
+<p><strong>Initialisation:</strong> Choose the number of clusters, k, and randomly initialise k cluster centres. Each centre represents a potential centroid of a cluster.
+<img src="Pasted%20image%2020230426105951.png" alt="">
+<em>k</em> initial &quot;means&quot; (in this case <em>k</em>=3) are randomly generated within the data domain (shown in colour).`
+Different initialisation methods can lead to different clusterings and impact the performance of the algorithm. </p>
+<p><strong>Here are some common initialisation methods used in the k-means algorithm:</strong></p>
+<p><em><a href="https://www.geeksforgeeks.org/ml-random-intialization-trap-in-k-means/">Random Initialisation</a>:</em> This is the most common initialisation method used in the k-means algorithm. In this method, k data points are randomly selected from the dataset as the initial cluster centres.
+<em><a href="https://en.wikipedia.org/wiki/K-means%2B%2B">K-Means++</a> Initialisation:</em> This method is an improvement over random initialisation and aims to choose initial cluster centres that are more representative of the data points. The algorithm starts by randomly selecting one data point as the first cluster centre. For each subsequent cluster centre, the algorithm selects a data point that is farthest from the existing cluster centres. This process is repeated until k cluster centres have been chosen.
+<em><a href="https://en.wikipedia.org/wiki/Cluster_analysis#Density-based_clustering">Density-Based Initialization</a>:</em> This method is used when the data points are not uniformly distributed and are clustered in regions of high density. In this method, the algorithm first identifies the regions of high density by using a density-based clustering algorithm, such as DBSCAN. The centre of each dense region is then chosen as a cluster centre.
+<em>Hierarchical Initialisation:</em> This method uses a <a href="https://en.wikipedia.org/wiki/Hierarchical_clustering">hierarchical clustering</a> algorithm to group similar data points into clusters. The cluster centres are then chosen from the resulting clusters by selecting the data point that is farthest from the other cluster centres.
+    The choice of initialisation method can have a significant impact on the performance of the k-means algorithm. K-means++ initialisation is often preferred over random initialisation because it can lead to faster convergence and more accurate clustering.</p>
+<p><strong>Assignment:</strong> Assign each data point in the dataset to the nearest cluster centre. This is done by calculating the distance between each data point and each cluster centre. The data point is then assigned to the nearest cluster centre.
+<img src="Pasted%20image%2020230426110116.png" alt="">
+<code>k clusters are created by associating every observation with the nearest mean. The partitions here represent the Voronoi diagram generated by the means.</code></p>
+<p><strong>Recalculation:</strong> Recalculate the cluster centres by taking the mean of all the data points assigned to that cluster centre. This step creates new cluster centres that are better representatives of the data points in each cluster.
+<img src="Pasted%20image%2020230426110120.png" alt="">
+<code>The centroid of each of the k clusters becomes the new mean.</code></p>
+<p><strong>Repeat steps 2 and 3 until convergence:</strong> Steps 2 and 3 are repeated until the cluster assignments no longer change or change by only a small amount.
+<img src="Pasted%20image%2020230426110040.png" alt="">
+<code>Steps 2 and 3 are repeated until convergence has been reached.</code></p>
+<p><strong>Selection of optimal k:</strong> The optimal value of k is chosen based on some criterion, such as the elbow method or the silhouette score. The elbow method involves plotting the sum of squared distances for different values of k and selecting the k value at the elbow point of the plot. The silhouette score measures how well each data point fits into its assigned cluster and can be used to compare the quality of clusterings for different values of k.</p>
 
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="google-site-verification" content="_SXyl5T3hvOdDzBuw4EVGD8qyT4ipkQ-4S0TN41zvdI">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sunum boyle yapilir!!</title>
-
-    <!-- Local stylesheets -->
-    <link rel="stylesheet" type="text/css" href="./docs/style.css">
-
-    <!-- Fonts -->
-    <link href="./docs/css" rel="stylesheet" type="text/css">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="https://www.naftaliharris.com/favicon.ico?1=1">
-
-    <!-- SentiLink -->
-    <script type="text/javascript" async="" src="./docs/ga.js"></script><script id="twitter-wjs" src="./docs/widgets.js"></script><script type="text/javascript" src="./docs/sentijs-5ecd4301d525fc4c1712.js"></script>
-    <script type="text/javascript">window.onload = () => new window.sentiJS('01CZ1YD43X96PGVGEZQHKTGMWV').getDevice();</script>
-
-<script charset="utf-8" src="./docs/button.e7f9415a2e000feaab02c86dd5802747.js"></script></head>
-<body>
-
-<div class="content">
-  <h1 id="cok-havali-hareketler-bunlar"><a href="https://music.youtube.com/watch?v=IZCq57ouD2M&feature=share">Cok havali hareketler bunlar</a></h1>
-  <p class="postdate">May 2, 2023 (Sabaha karsi sunum yeni bitmisti)</p>
-  
-<p>
-Berkay bu sayfayi calmadi!
-</p>
-
-<style>
-  input {
-    font-size: 40px;
-  }
-
-  text.choice_text {
-    font-size: 20px;
-  }
-
-  text.choice_title {
-    font-size: 40px;
-  }
-</style>
-
+<p><a href="brineddata.github.io/brineddata">Click for Demonstration</a></p>
 <script src="./docs/d3.v3.min.js"></script>
 <script src="./docs/choose.js"></script>
 <script src="./docs/generate.js"></script>
@@ -76,4 +97,139 @@ Berkay bu sayfayi calmadi!
 
 </script>
 
-<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./docs/widget_iframe.2b2d73daf636805223fb11d48f3e94f7.html" title="Twitter settings iframe" style="display: none;"></iframe><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./docs/saved_resource.html"></iframe></body></html>
+
+<h6 id="limitations">Limitations</h6>
+<p><strong><a href="https://www.geeksforgeeks.org/ml-random-intialization-trap-in-k-means/">Sensitivity to initialisation</a>:</strong> The k-means algorithm is sensitive to the initial placement of the cluster centroids. Depending on the initialisation method used, the algorithm may converge to a sub-optimal clustering solution. This means that multiple runs of the algorithm may be necessary to ensure that the best possible clustering is achieved.</p>
+<p><strong>Sensitive to outliers:</strong> K-means clustering assumes that all data points are equally important and treats outliers as regular data points. This can lead to sub-optimal clustering results, as the presence of outliers can distort the positions of the cluster centroids.</p>
+<p><strong>Requires pre-defined k-value:</strong> The k-means algorithm requires a predetermined number of clusters to be specified. This can be a challenge when the optimal number of clusters is not known beforehand, or when the data is not naturally separable into distinct clusters.</p>
+<p><strong>Limited to <a href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distance</a> metric:</strong> The k-means algorithm is based on the Euclidean distance metric, which is not always appropriate for all types of data. In cases where non-Euclidean distance metrics may be more appropriate, such as when dealing with categorical data, k-means clustering may not be the best choice.</p>
+<p><strong>Assumes spherical clusters:</strong> K-means clustering assumes that the clusters are spherical, meaning that each cluster has a roughly equal diameter in all dimensions. This assumption may not hold true for all datasets, which can lead to sub-optimal clustering results.</p>
+<h6 id="improving-the-algorithm">Improving the Algorithm</h6>
+<p><strong>Multiple initialisations:</strong> As mentioned earlier, the k-means algorithm is sensitive to the initial placement of the cluster centroids. One way to mitigate this issue is to run the algorithm multiple times with different initialisations and choose the clustering solution with the lowest cost function value.</p>
+<p><strong>Using alternative distance metrics:</strong> While the k-means algorithm is based on the Euclidean distance metric, other distance metrics such as Manhattan distance, Mahalanobis distance, or cosine similarity can be used depending on the nature of the data. For example, Mahalanobis distance can be useful when the data is not normally distributed or has different variances along different dimensions.</p>
+<p><strong>Outlier detection and removal:</strong> To make k-means more robust to outliers, one can use outlier detection techniques such as the Local Outlier Factor (LOF) or Isolation Forest to identify and remove outliers before running k-means.</p>
+<p><strong>Using dimensionality reduction:</strong> When the dataset has a large number of features or dimensions, it can be helpful to use dimensionality reduction techniques such as Principal Component Analysis (PCA) or t-SNE to reduce the dimensionality of the data before applying k-means. This can help to improve the clustering performance and reduce computational costs.</p>
+<p><strong>Using hierarchical clustering:</strong> Instead of using a fixed number of clusters as in k-means, one can use hierarchical clustering to build a tree-like structure of nested clusters. This can help to identify the optimal number of clusters for a given dataset, and can also provide a more informative visualisation of the clustering results.</p>
+<h6 id="applications-">Applications:</h6>
+<p><strong>Market segmentation:</strong> K-means clustering can be used to segment customers or products into groups based on similar characteristics such as demographics, behaviour, or preferences. This can help businesses to target specific groups with tailored marketing strategies.</p>
+<p><strong>Image segmentation:</strong> K-means clustering can be used to segment images into regions of similar color or texture. This can be useful in applications such as object detection, facial recognition, or medical image analysis.</p>
+<p><strong>Anomaly detection:</strong> K-means clustering can be used to identify anomalous data points that do not fit well into any of the clusters. This can be useful for detecting fraudulent transactions, network intrusion, or equipment failure.</p>
+<p><strong>Recommender systems:</strong> K-means clustering can be used to group users or items based on similar preferences or behaviour. This can be used to build personalised recommendation systems for movies, products, or services.</p>
+<p><strong>Natural language processing:</strong> K-means clustering can be used to cluster text documents based on their content or topic. This can be useful in applications such as sentiment analysis, topic modelling, or document classification.</p>
+<h2 id="-hierarchical-clustering-https-en-wikipedia-org-wiki-hierarchical_clustering-"><a href="https://en.wikipedia.org/wiki/Hierarchical_clustering">Hierarchical Clustering</a></h2>
+<p>Hierarchical clustering is a type of unsupervised learning algorithm that groups data points into clusters based on their similarity. It creates a hierarchy of clusters, where each level represents a different level of granularity. In other words, the algorithm groups data points into small clusters, and then merges them into larger clusters, until all data points are grouped together into a single cluster. The result is a tree-like structure, called a <a href="https://en.wikipedia.org/wiki/Dendrogram">dendrogram</a>, that illustrates the relationships between the different clusters at different levels of granularity. The two main types of hierarchical clustering are <strong>agglomerative clustering</strong> and <strong>divisive clustering</strong>.</p>
+<p>Hierarchical clustering has a wide range of applications, including in the fields of biology, marketing, social sciences, and computer science. For example, it can be used in gene expression analysis to <a href="https://bmcmedgenomics.biomedcentral.com/articles/10.1186/s12920-019-0650-0">group genes that are co-expressed</a>, in market segmentation to group customers based on their purchasing behaviour, or in social network analysis to identify communities of users with similar interests.</p>
+<h4 id="agglomerative-method">Agglomerative Method</h4>
+<p>It is an iterative algorithm that groups data points into clusters based on their similarity, by successively merging the two most similar clusters at each iteration.</p>
+<h6 id="the-steps-">The Steps:</h6>
+<p><strong>Initialisation:</strong> Each data point is considered as a separate cluster.</p>
+<p><strong>Similarity measurement:</strong> The similarity between each pair of clusters is calculated using a distance metric such as Euclidean <em>distance</em> or <em>cosine similarity</em>.</p>
+<p><strong>Cluster merging:</strong> The two most similar clusters are merged into a single cluster, reducing the total number of clusters by one. The similarity between the two clusters can be calculated using a linkage criterion such as single linkage, complete linkage, or average linkage. Single linkage measures the minimum distance between any two points in the two clusters, complete linkage measures the maximum distance, and average linkage measures the average distance.</p>
+<p><strong>Distance update:</strong> The distances between the new cluster and the remaining clusters are updated using the linkage criterion. For example, in single linkage, the distance between the new cluster and a remaining cluster is the minimum distance between any two points in the two clusters.</p>
+<p><strong>Iteration:</strong> Steps 2-4 are repeated until all data points are grouped together into a single cluster.</p>
+<p><strong>Dendrogram construction:</strong> A dendrogram is constructed to visualise the hierarchical structure of the clustering. The dendrogram shows the clusters at different levels of granularity, and the distance between them represents the dissimilarity between the clusters.</p>
+<p><strong><em><img src="Pasted%20image%2020230501064012.png" alt=""></em></strong> The number of clusters to select is determined by cutting the dendrogram at a certain level of similarity. This can be done manually by visual inspection of the dendrogram or automatically using methods such as the elbow method or silhouette method.</p>
+<h6 id="explanation-of-linkage-methods">Explanation of Linkage Methods</h6>
+<p>In hierarchical clustering, the linkage method is used to measure the similarity between clusters and decide which two clusters should be merged at each iteration of the agglomerative algorithm. There are several types of linkage methods, including:</p>
+<p><strong><a href="https://www.statistics.com/glossary/single-linkage-clustering/">Single linkage:</a></strong> This method computes the similarity between two clusters based on the minimum distance between any pair of points in the two clusters. Single linkage tends to produce long, chain-like clusters that can be sensitive to noise and outliers.</p>
+<p><strong><a href="https://www.statistics.com/glossary/complete-linkage-clustering/">Complete linkage:</a></strong> This method computes the similarity between two clusters based on the maximum distance between any pair of points in the two clusters. Complete linkage tends to produce compact, spherical clusters that can be less sensitive to noise and outliers.</p>
+<p><strong><a href="https://www.statistics.com/glossary/average-linkage-clustering/">Average linkage:</a></strong> This method computes the similarity between two clusters based on the average distance between all pairs of points in the two clusters. Average linkage balances the effects of single and complete linkage and tends to produce medium-sized, spherical clusters.</p>
+<p><strong><a href="https://www.statistics.com/glossary/wards-linkage/#:~:text=Ward%C2%B4s%20linkage%20is%20a%20method%20for%20hierarchical%20cluster,after%20fusing%20two%20clusters%20into%20a%20single%20cluster.">Ward linkage:</a></strong> This method measures the similarity between two clusters based on the increase in variance that results from merging the two clusters. Ward linkage tends to produce compact, spherical clusters that minimize the variance within each cluster.</p>
+<p><img src="Pasted%20image%2020230501065446.png" alt=""></p>
+<p><em>Let&#39;s consider an <a href="https://coderzcolumn.com/tutorials/machine-learning/scikit-learn-sklearn-hierarchical-clustering#3.1">example</a> of clustering with different linkage methods using the &quot;iris&quot; dataset, which contains measurements of the sepal length, sepal width, petal length, and petal width for 150 iris flowers, classified into three species: setosa, versicolor, and virginica.</em></p>
+<p><em>We can use hierarchical clustering with different linkage methods to group the iris flowers based on their measurements. Here are some examples:
+Single linkage: This method tends to produce long, chain-like clusters that can be sensitive to noise and outliers. In the iris dataset, single linkage can create long, thin clusters that may not be very informative.
+Complete linkage: This method tends to produce compact, spherical clusters that can be less sensitive to noise and outliers. In the iris dataset, complete linkage can create well-separated clusters that correspond well to the three iris species.
+Average linkage: This method balances the effects of single and complete linkage and tends to produce medium-sized, spherical clusters. In the iris dataset, average linkage can create clusters that are similar to those produced by complete linkage.
+Ward linkage: This method tends to produce compact, spherical clusters that minimize the variance within each cluster. In the iris dataset, Ward linkage can create well-separated clusters that correspond well to the three iris species. </em></p>
+<p><img src="Pasted%20image%2020230501065108.png" alt=""></p>
+<h4 id="divisive-method">Divisive Method</h4>
+<h6 id="the-steps">The Steps</h6>
+<p>The divisive method of hierarchical clustering is also known as &quot;top-down&quot; clustering, as it starts with all the observations in a single cluster and then recursively divides them into smaller clusters until each observation is in its own cluster. Here are the detailed steps of the divisive method:</p>
+<ul>
+<li>Start with all the observations in a single cluster.</li>
+<li>Compute the dissimilarity matrix or distance matrix between all pairs of observations in the cluster.</li>
+<li>Find the pair of observations that are the most dissimilar or farthest apart from each other, and split the cluster into two sub-clusters consisting of these two observations.</li>
+<li>Recompute the dissimilarity matrix between the new sub-clusters and the original cluster.</li>
+<li>Repeat steps 3 and 4 recursively on each sub-cluster until each observation is in its own cluster.</li>
+</ul>
+<p>The divisive method is a top-down approach that requires choosing a stopping criterion for when to stop dividing the clusters. One common stopping criterion is to stop when the desired number of clusters has been reached, which can be determined by the user or by using a clustering quality metric such as the silhouette score or the <a href="https://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set">gap statistic</a>.</p>
+<p>Compared to the agglomerative method, <strong>the divisive method can be more computationally expensive and less popular</strong> due to the difficulty of finding an appropriate stopping criterion and the sensitivity of the results to the choice of the initial cluster. However, it can be useful in some scenarios where the agglomerative method may not work well, such as when the clusters have a tree-like structure or when there are clear outliers or noise points in the data.</p>
+<h6 id="tree-pruning">Tree Pruning</h6>
+<p>Cutting a hierarchical tree means selecting a subset of clusters at a certain level of the tree, which can be used as the final clusters for analysis or interpretation.</p>
+<p>A cut in a hierarchical tree is determined by selecting a level or &quot;height&quot; at which to truncate the tree. The height is typically measured on the vertical axis of a dendrogram, which represents the distances between clusters. The cut can be made at any height, resulting in a different number of clusters and a different cluster composition.</p>
+<p>There are different criteria for selecting the height at which to make the cut, depending on the purpose of the analysis and the characteristics of the data. Some common methods for selecting the cut height include:</p>
+<p><strong>Maximum cluster size:</strong> Set a maximum number of observations per cluster and select the cut height that produces clusters with no more than that number of observations.</p>
+<p><strong>Gap statistic:</strong> Compute the gap statistic for a range of cut heights and select the height that maximises the gap statistic, which measures the difference between the within-cluster dispersion of the data and the expected dispersion of a null reference distribution.</p>
+<p><strong>Silhouette score:</strong> Compute the <a href="https://es.wikipedia.org/wiki/Silhouette_(clustering">silhouette</a>&gt;)score for a range of cut heights and select the height that maximises the average silhouette score, which measures the degree of similarity of each observation to its own cluster compared to other clusters.</p>
+<p><strong>Domain-specific knowledge:</strong> Use prior knowledge about the data or the research question to select a cut height that produces meaningful or interpretable clusters.</p>
+<p>Once the cut height is selected, the resulting clusters can be assigned labels or names based on their characteristics or properties. Cut trees can be useful for exploratory data analysis, feature selection, data reduction, or hypothesis generation.</p>
+<h6 id="limitations-of-divisive-clustering">Limitations of Divisive Clustering</h6>
+<p><strong>Computationally expensive</strong>, especially for large datasets, since it involves recursively dividing clusters until individual data points are reached. This can lead to longer processing times and may require more computational resources.</p>
+<p><strong>Sensitive to initial clustering</strong> that is used as input, which can affect the resulting clusters. This means that different initial clusterings can produce different results, which may be a limitation if there is no clear way to determine the best initial clustering.</p>
+<p><strong>Requires good stopping criterion</strong> to determine when to stop dividing clusters. If the stopping criterion is too strict, it may result in too few clusters or incomplete clustering, while if it is too lax, it may result in too many clusters or over-fitting.</p>
+<p><strong>May produce unbalanced clusters</strong>, with some clusters being much larger or smaller than others. This can be a limitation if the goal is to have clusters of similar size or if there is no clear way to determine the optimal balance of cluster sizes.</p>
+<h4 id="distance-metrics">Distance Metrics</h4>
+<p>Distance metrics are used in hierarchical clustering to measure the similarity or dissimilarity between two data points. Here are some commonly used distance metrics in hierarchical clustering:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distance</a>: This is the most commonly used distance metric in clustering. It measures the straight-line distance between two points in n-dimensional space. It is calculated as the square root of the sum of the squared differences between corresponding coordinates of the two points.</li>
+<li>*<a href="https://en.wikipedia.org/wiki/Taxicab_geometry">Manhattan distance</a>: Also known as city block distance, this metric measures the distance between two points by summing the absolute differences between their corresponding coordinates. It is called city block distance because it is akin to navigating city blocks on a grid-like map.</li>
+<li><a href="https://en.wikipedia.org/wiki/Minkowski_distance">Minkowski distance</a>: This is a generalised distance metric that includes both Euclidean and Manhattan distances as special cases. It is defined as the nth root of the sum of the nth power of the differences between corresponding coordinates of the two points.</li>
+<li><a href="https://en.wikipedia.org/wiki/Cosine_similarity">Cosine distance</a>: This metric measures the similarity between two vectors, regardless of their magnitude. It is calculated as the cosine of the angle between two vectors in n-dimensional space.</li>
+<li><a href="https://en.wikipedia.org/wiki/Distance_correlation">Correlation distance</a>: This metric measures the correlation between two vectors, where a value of 1 indicates perfect correlation, 0 indicates no correlation, and -1 indicates perfect negative correlation.</li>
+</ul>
+<p><strong>Here are some considerations for comparing different distance metrics:</strong></p>
+<ul>
+<li>Sensitivity to data type: Different distance metrics have different sensitivities to different types of data. For example, Euclidean distance is suitable for continuous data, while Hamming distance is suitable for categorical data. It is important to choose a distance metric that is appropriate for the data being analysed.</li>
+<li>Sensitivity to scale: Different distance metrics have different sensitivities to differences in scale. For example, Euclidean distance is sensitive to differences in scale, while cosine distance is not. This means that using Euclidean distance on data with variables that have different scales may produce misleading results.</li>
+<li>Sensitivity to outliers: Different distance metrics have different sensitivities to outliers. For example, Mahalanobis distance is less sensitive to outliers than Euclidean distance. It is important to choose a distance metric that is robust to outliers if they are present in the data.</li>
+<li>Computational efficiency: Different distance metrics have different computational requirements. Some distance metrics are more computationally intensive than others. This is an important consideration when working with large datasets.</li>
+<li>Interpretability: Different distance metrics have different interpretations. For example, Euclidean distance can be interpreted as the straight-line distance between two points in space, while correlation distance can be interpreted as the degree of correlation between two vectors. The interpretability of a distance metric may be important for understanding the results of a clustering analysis.</li>
+</ul>
+<h4 id="applications">Applications</h4>
+<ul>
+<li><strong>Biology</strong>, bioinformatics to analyse gene expression data. By clustering genes with similar expression patterns, researchers can identify genes that may be involved in the same biological pathway or process.</li>
+<li>In <strong>marketing</strong>, hierarchical clustering can be used to segment customers based on their purchasing behaviour. By clustering customers with similar purchasing behaviour, marketers can tailor their marketing strategies to specific customer groups.</li>
+<li>In <strong>social sciences</strong> to identify groups of individuals with similar characteristics or behaviours. For example, researchers may use hierarchical clustering to identify clusters of students with similar academic performance or clusters of patients with similar health conditions.</li>
+<li>In <strong>computer science</strong>, hierarchical clustering can be used for data compression and image segmentation. By clustering similar pixels in an image, researchers can segment the image into distinct regions.</li>
+<li>In <strong>ecology</strong> to identify groups of species with similar characteristics. By clustering species based on their ecological traits, researchers can gain insights into the relationships between different species and their roles in ecosystems.</li>
+</ul>
+<h4 id="selecting-the-appropriate-algorithm">Selecting the Appropriate Algorithm</h4>
+<p>K-means clustering is generally faster and more computationally efficient, while hierarchical clustering is more flexible and produces a dendrogram that allows the user to visualise the hierarchical relationships between clusters.
+When it comes to selecting an appropriate algorithm for clustering, there are several criteria to consider, including:</p>
+<p><strong>Data size:</strong> If you are working with a large dataset, k-means clustering may be a more appropriate choice due to its scalability.</p>
+<p><strong>Data structure:</strong> The structure of your data may also play a role in selecting an appropriate algorithm. If your data has a hierarchical structure, hierarchical clustering may be a better choice.</p>
+<p><strong>Number of clusters:</strong> If you have a pre-defined number of clusters in mind, k-means clustering may be the better choice. However, if you are unsure of the number of clusters, hierarchical clustering may be a more appropriate choice.</p>
+<p><strong>Interpretability:</strong> If you need to be able to interpret the resulting clusters, k-means clustering may be a better choice due to its simplicity. However, if you are more interested in exploring the relationships between data points, hierarchical clustering may be a better choice.</p>
+<p><strong>Robustness to outliers:</strong> If your data contains outliers, k-means clustering may be sensitive to them and produce sub-optimal results. In this case, hierarchical clustering may be a more robust choice.</p>
+<p><strong>Computational resources:</strong> Finally, the computational resources available to you may also influence your choice of clustering algorithm. K-means clustering tends to be more computationally efficient than hierarchical clustering, which can be resource-intensive.</p>
+<hr>
+<h6 id="other-clustering-models">Other Clustering Models</h6>
+<p><strong>DBSCAN:</strong> DBSCAN is a density-based clustering algorithm that groups data points into clusters based on their density. Unlike hierarchical clustering, DBSCAN does not require the number of clusters to be specified in advance and can identify clusters of arbitrary shapes.</p>
+<p><strong>Gaussian Mixture Models:</strong> Gaussian Mixture Models (GMMs) are probabilistic models that assume that the data is generated from a mixture of Gaussian distributions. Unlike hierarchical clustering, GMMs can capture the uncertainty in cluster assignments and estimate the probability of a data point belonging to each cluster.</p>
+<p><strong>Spectral Clustering:</strong> Spectral clustering is a graph-based clustering algorithm that groups data points based on the eigenvectors of the graph Laplacian matrix. Unlike hierarchical clustering, spectral clustering can identify clusters of arbitrary shapes and is particularly effective for datasets with complex geometric structures.</p>
+<hr>
+<h6 id="dimensionality-reduction-with-clustering">Dimensionality Reduction with Clustering</h6>
+<p>Dimensionality reduction with clustering is a technique used to reduce the number of variables in a dataset while retaining as much information as possible. The goal is to simplify the dataset by eliminating variables that are not relevant or redundant, thereby reducing computational complexity and improving the accuracy of machine learning models.</p>
+<hr>
+<h6 id="challenges-in-unsupervised-learning">Challenges in unsupervised learning</h6>
+<ul>
+<li>Lack of Ground Truth: In unsupervised learning, there is no ground truth or labeled data that can be used to validate the results. This makes it difficult to evaluate the accuracy of the algorithms.</li>
+<li>Dimensionality: Unsupervised learning often deals with high-dimensional data, which can make it challenging to find meaningful patterns and clusters.</li>
+<li>Scalability: Many unsupervised learning algorithms can be computationally expensive and may not scale well to large datasets.</li>
+<li>Over-fitting: Unsupervised learning algorithms may suffer from over-fitting, where the algorithm fits too closely to the training data and does not generalise well to new data.</li>
+<li>Interpretability: Unsupervised learning algorithms can be difficult to interpret and explain, making it challenging to gain insights from the results.</li>
+<li>Noise and Outliers: Unsupervised learning algorithms may be sensitive to noise and outliers in the data, which can result in inaccurate clustering.</li>
+<li>Bias: Unsupervised learning algorithms can be biased towards certain features or clusters, which can lead to inaccurate results.</li>
+<li><p>Selection of Parameters: Many unsupervised learning algorithms require the selection of parameters, such as the number of clusters or the distance metric, which can be challenging to determine.</p>
+<hr>
+<h6 id="applications-of-unsupervised-learning-in-new-domains">Applications of unsupervised learning in new domains</h6>
+</li>
+<li>Healthcare: Unsupervised learning can be used in medical image analysis for early detection and diagnosis of various diseases, such as cancer, Alzheimer&#39;s, and Parkinson&#39;s.</li>
+<li>Finance: Clustering algorithms can be used to detect fraudulent activities and anomalies in financial transactions.</li>
+<li>Cyber-security: Unsupervised learning can be used to detect unusual patterns and behaviours in network traffic, thereby identifying potential security threats.</li>
+<li>Social media: Clustering algorithms can be used to group users based on their preferences and behaviour, thereby providing personalised recommendations and targeted advertising.</li>
+<li>Transportation: Unsupervised learning can be used to analyse data from transportation networks, such as traffic patterns and vehicle usage, to optimise routes and improve efficiency.</li>
+<li>Agriculture: Unsupervised learning can be used to analyse crop data, such as yield, quality, and disease resistance, to optimise planting and harvesting strategies.</li>
+<li>Energy: Unsupervised learning can be used to analyse energy usage patterns in buildings and predict future demand, thereby optimising energy consumption and reducing costs.</li>
+</ul>
