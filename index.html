@@ -71,13 +71,16 @@ p {
   font-size: 14px;
 }
 </style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div class="my-element">
-  <h3>It is strongly advised to listen to this playlist while reading this article!!!</h3>
-  
+
 <div style="text-align:center;">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?controls=0&amp;list=PLhRF9wIpExscIQtW0akJqMiE0AWchEnxj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLhRF9wIpExscIQtW0akJqMiE0AWchEnxj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 
@@ -100,22 +103,22 @@ p {
 <p>K-means clustering is mostly used for image segmentation, customer segmentation, and anomaly detection. It is a relatively simple and fast algorithm that can handle large datasets, but its performance can be sensitive to the initial placement of the cluster centres and the choice of k.</p>
 <h6 id="formula-">Formula!</h6>
 <ul>
-<li>a set of observations $$(x<em>{1}, x</em>{2}, ..., x_{n})$$</li>
+<li>a set of observations $$(x_{1}, x_{2}, ..., x_{n})$$</li>
 <li>each observation is a <em>d</em>-dimensional real vector</li>
-<li>k-means clustering aims to partition the <em>n</em> observations into <em>k</em> (≤ <em>n</em>) sets $$S = {S<em>{1}, S</em>{2},...,S_{k}}$$</li>
+<li>k-means clustering aims to partition the <em>n</em> observations into <em>k</em> (≤ <em>n</em>) sets $$S = \{S_{1}, S_{2},...,S_{k}\}$$</li>
 <li>to minimize the within-cluster sum of squares (WCSS) (i.e. <a href="https://en.wikipedia.org/wiki/Variance">variance</a>)</li>
-<li>where <em><strong>μ</strong>i</em> is the mean (also called centroid) of points in $$S<em>{i} $$, i.e.
-$$ {\boldsymbol {\mu </em>{i}}}={\frac {1}{|S<em>{i}|}}\sum </em>{\mathbf {x} \in S_{i}}\mathbf {x} , $$</li>
-<li><p>the size of $$ S<em>{i} $$ is: $$|S</em>{i}|$$</p>
-<p><strong>Formally, the objective is to find:</strong>$${\underset {\mathbf {S} }{\operatorname {arg\,min} }}\sum <em>{i=1}^{k}\sum </em>{\mathbf {x} \in S<em>{i}}\left|\mathbf {x} -{\boldsymbol {\mu }}</em>{i}\right|^{2}={\underset {\mathbf {S} }{\operatorname {arg\,min} }}\sum <em>{i=1}^{k}|S</em>{i}|\operatorname {Var} S_{i} $$</p>
+<li>where $$μ_{i}$$ is the mean (also called centroid) of points in $$S_{i} $$, i.e.
+  $$ {\boldsymbol {\mu _{i}}}={\frac {1}{|S_{i}|}}\sum _{\mathbf {x} \in S_{i}}\mathbf {x} , $$</li>
+<li><p>the size of $$ S_{i} $$ is $$|S_{i}|$$</p>
+<p><strong>Formally, the objective is to find:</strong>$${\underset {\mathbf {S} }{\operatorname {arg\,min} }}\sum _{i=1}^{k}\sum _{\mathbf {x} \in S_{i}}\left\|\mathbf {x} -{\boldsymbol {\mu }}_{i}\right\|^{2}={\underset {\mathbf {S} }{\operatorname {arg\,min} }}\sum _{i=1}^{k}|S_{i}|\operatorname {Var} S_{i} $$</p>
 </li>
 </ul>
 <p>and
-$$ |\cdot | $$
+  $$ \|\cdot \| $$
 is the usual <a href="[https://en.wikipedia.org/wiki/Norm_(mathematics">L2 norm</a> . This is equivalent to minimising the pairwise squared deviations of points in the same cluster:</p>
-<p>$$ {\underset {\mathbf {S} }{\operatorname {arg\,min} }}\sum <em>{i=1}^{k}\,{\frac {1}{|S</em>{i}|}}\,\sum <em>{\mathbf {x} ,\mathbf {y} \in S</em>{i}}\left|\mathbf {x} -\mathbf {y} \right|^{2} $$</p>
+<p>$$ {\underset {\mathbf {S} }{\operatorname {arg\,min} }}\sum _{i=1}^{k}\,{\frac {1}{|S_{i}|}}\,\sum _{\mathbf {x} ,\mathbf {y} \in S_{i}}\left\|\mathbf {x} -\mathbf {y} \right\|^{2} $$</p>
 <p>The equivalence can be deduced from identity 
-$$ |S<em>{i}|\sum </em>{\mathbf {x} \in S<em>{i}}\left|\mathbf {x} -{\boldsymbol {\mu }}</em>{i}\right|^{2}={\frac {1}{2}}\sum <em>{\mathbf {x} ,\mathbf {y} \in S</em>{i}}\left|\mathbf {x} -\mathbf {y} \right|^{2} $$</p>
+  $$ |S_{i}|\sum _{\mathbf {x} \in S_{i}}\left\|\mathbf {x} -{\boldsymbol {\mu }}_{i}\right\|^{2}={\frac {1}{2}}\sum _{\mathbf {x} ,\mathbf {y} \in S_{i}}\left\|\mathbf {x} -\mathbf {y} \right\|^{2} $$</p>
 <p>Since the total variance is constant, this is equivalent to maximising the sum of squared deviations between points in <em>different</em> clusters (between-cluster sum of squares, BCSS). This deterministic relationship is also related to the <a href="https://en.wikipedia.org/wiki/Law_of_total_variance" title="Law of total variance">law of total variance</a> in probability theory.</p>
 <h6 id="purpose">Purpose!</h6>
 <p>k-means clustering can be used for a variety of tasks, such as:
@@ -319,6 +322,13 @@ When it comes to selecting an appropriate algorithm for clustering, there are se
 <li>Agriculture: Unsupervised learning can be used to analyse crop data, such as yield, quality, and disease resistance, to optimise planting and harvesting strategies.</li>
 <li>Energy: Unsupervised learning can be used to analyse energy usage patterns in buildings and predict future demand, thereby optimising energy consumption and reducing costs.</li>
 </ul>
-</div>
+<hr>
+<h4 id="Click for Applied Case of Unsupervised Learning!"><a href="https://colab.research.google.com/drive/1TNVqTiIDWIrHMLy3WgcKadTQE07QC4NN?usp=sharing">Click for Applied Case of Unsupervised Learning!</a></h4>
+<hr>
+<h4 id="References and Further Reading!"><a href="https://drive.google.com/drive/folders/1Q88cFjcms_H0Qb_hqBB6P2Jz5ELH2XuJ?usp=sharing">References and Further Reading!</a></h4>
+<hr>
+<h6 id="Canan"><a href="https://www.linkedin.com/in/canantamturkkara/">Canan Tamturk Kara</a></h6>
+<h6 id="Berkay"><a href="https://www.linkedin.com/in/metinberkaykonar/">Metin Berkay Konar</a></h6>
+
 </body>
 </html>
