@@ -2,23 +2,72 @@
 <html>
 <head>
 <style>
-body {
-  background-color: lightblue;
+.my-element {
+padding: 100px;
+background-color: #1c0000;
+
+
+
 }
 
+a {
+        text-decoration: none;
+        color: inherit;
+      }
+
 h1 {
-  color: white;
+  color: #fbb4fa;
   text-align: center;
   font-family: ubuntu;
+  font-size: 48px
+}
+h2 {
+  color: #fbb4fa;
+  text-align: center;
+  font-family: ubuntu;
+  font-size: 32px
+}
+h3 {
+  color: #fbb4fa;
+  text-align: center;
+  font-family: ubuntu;
+  font-size: 24px
+}
+h4 {
+  color: #fbb4fa;
+  text-align: center;
+  font-family: ubuntu;
+  font-size: 20px
+}
+h5 {
+  color: #fbb4fa;
+  text-align: peachpuff;
+  font-family: ubuntu;
+  font-size: 16px
+}
+h6 {
+  color: #fbb4fa;
+  text-align: purple;
+  font-family: ubuntu;
+  font-size: 14px
+}
+li {
+  color: #ff89fe;
+  text-align: left;
+  font-family: ubuntu;
+  font-size: 14px
 }
 
 p {
+  color: #ff89fe;
   font-family: ubuntu;
-  font-size: 20px;
+  font-size: 14px;
 }
 </style>
 </head>
 <body>
+<div class="my-element">
+
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/vnKjvX9BujY?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -121,7 +170,7 @@ Different initialisation methods can lead to different clusterings and impact th
 
 </script>
 
-
+<div class="my-element">
 <h6 id="limitations">Limitations</h6>
 <p><strong><a href="https://www.geeksforgeeks.org/ml-random-intialization-trap-in-k-means/">Sensitivity to initialisation</a>:</strong> The k-means algorithm is sensitive to the initial placement of the cluster centroids. Depending on the initialisation method used, the algorithm may converge to a sub-optimal clustering solution. This means that multiple runs of the algorithm may be necessary to ensure that the best possible clustering is achieved.</p>
 <p><strong>Sensitive to outliers:</strong> K-means clustering assumes that all data points are equally important and treats outliers as regular data points. This can lead to sub-optimal clustering results, as the presence of outliers can distort the positions of the cluster centroids.</p>
@@ -247,6 +296,7 @@ When it comes to selecting an appropriate algorithm for clustering, there are se
 <li>Bias: Unsupervised learning algorithms can be biased towards certain features or clusters, which can lead to inaccurate results.</li>
 <li><p>Selection of Parameters: Many unsupervised learning algorithms require the selection of parameters, such as the number of clusters or the distance metric, which can be challenging to determine.</p>
 <hr>
+
 <h6 id="applications-of-unsupervised-learning-in-new-domains">Applications of unsupervised learning in new domains</h6>
 </li>
 <li>Healthcare: Unsupervised learning can be used in medical image analysis for early detection and diagnosis of various diseases, such as cancer, Alzheimer&#39;s, and Parkinson&#39;s.</li>
@@ -257,6 +307,6 @@ When it comes to selecting an appropriate algorithm for clustering, there are se
 <li>Agriculture: Unsupervised learning can be used to analyse crop data, such as yield, quality, and disease resistance, to optimise planting and harvesting strategies.</li>
 <li>Energy: Unsupervised learning can be used to analyse energy usage patterns in buildings and predict future demand, thereby optimising energy consumption and reducing costs.</li>
 </ul>
-
+</div>
 </body>
 </html>
